@@ -19,11 +19,11 @@ cd TodoList
 ```
 2. Install PHP Dependencies
 ```bash
-composer Install
+composer install
 ```
 3. Install Frontend Dependencies
 ```bash
-npm Install
+npm install
 npm run dev
 ```
 4. Create the Environment File
