@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller
 {
@@ -30,10 +31,11 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255'
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string'
         ]);
 
-        $validated['user_id'] = auth()->id(); // requires auth middleware
+        $validated['user_id'] = auth()->id();
 
         $project = Project::create($validated);
 
@@ -46,9 +48,13 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $project = Project::find($id);
+        $project = auth()->user()->projects()->findOrFail($id);
 
-        return view('projects.show', [ "proejct" => $project ]);
+        if (! Gate::allows('view-project', $project)) {
+            abort(403);
+        }
+
+        return view('projects.show', [ "project" => $project ]);
     }
 
     /**
@@ -64,7 +70,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $project = Project::findOrFail($id);
+
+        if (! Gate::allows('update-project', $project)) {
+            abort(403);
+        }
+
+        $project->update($request->only('title', 'description'));
+        return redirect()
+            ->route('dashboard')
+            ->with('success', 'Task updated successfully!');
     }
 
     /**
@@ -72,6 +92,13 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        if (! Gate::allows('delete-project', $project)) {
+            abort(403);
+        }
+        $project->delete();
+
+        return redirect()->route('dashboard', $project)
+                         ->with('success', 'Project deleted successfully.'); 
     }
 }

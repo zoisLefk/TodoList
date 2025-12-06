@@ -4,14 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/projects', function () {
-    return "projects";
-});
+Route::post('/projects', [ProjectController::class, 'store'])->middleware(['auth', 'verified'])->name('projects.store');
 
-Route::get('/projects/create', function() {
-    return view('projects.create');
-});
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->middleware(['auth', 'verified'])->name('projects.show');
 
-Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::delete('/proejct/{id}', [ProjectController::class, 'destroy'])->middleware(['auth', 'verified'])->name('projects.destroy');
 
-Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+Route::put('/todos/{project_id}', [ProjectController::class, 'update'])->middleware(['auth', 'verified'])->name('projects.update');
