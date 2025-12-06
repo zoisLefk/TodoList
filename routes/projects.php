@@ -10,4 +10,4 @@ Route::get('/projects/{id}', [ProjectController::class, 'show'])->middleware(['a
 
 Route::delete('/proejct/{id}', [ProjectController::class, 'destroy'])->middleware(['auth', 'verified'])->name('projects.destroy');
 
-Route::put('/todos/{project_id}', [ProjectController::class, 'update'])->middleware(['auth', 'verified'])->name('projects.update');
+Route::put('/proejct/{project_id}', [ProjectController::class, 'update'])->middleware(['auth', 'verified'])->name('projects.update');

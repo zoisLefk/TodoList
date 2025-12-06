@@ -80,7 +80,6 @@ class TodoController extends Controller
 
         $todo = Todo::findOrFail($id);
 
-        $todo = Todo::findOrFail($id);
         if (! Gate::allows('update-todo', $todo)) {
             abort(403);
         }
