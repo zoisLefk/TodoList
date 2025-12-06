@@ -54,11 +54,11 @@ http://127.0.0.1:8000
 2. Create Project
 * Go to dashboard
 * Click "Create New" next to projects
-* Fill the inputs and press "Create"
+* press "Create"
 3. Add Task
 * Click "Project Preview"
 * Click Add Task
-* Fill the inputs and press "Add"
+* press "Add"
 4. Mange Tasks
 * Mark a task as completed or uncompletd
 * Edit or delete a task
