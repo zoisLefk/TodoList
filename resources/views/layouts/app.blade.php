@@ -13,6 +13,26 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // 1. Check if we have a saved scroll position
+                var savedScroll = sessionStorage.getItem('scroll_pos');                
+
+                // 2. If we do, scroll to it immediately
+                if (savedScroll) {
+                    window.scrollTo(0, savedScroll);
+                    // 3. Clear the storage so it doesn't happen on other pages
+                    sessionStorage.removeItem('scroll_pos');
+                }
+            });
+
+            // 4. Listen for ANY form submission on the page
+            document.addEventListener("submit", function(e) {
+                // Save the current scroll Y position specifically for form submits
+                sessionStorage.setItem('scroll_pos', window.scrollY);
+            });
+        </script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">

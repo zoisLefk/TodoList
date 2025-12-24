@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Models\Project;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Session;
 
 class TodoController extends Controller
 {
@@ -120,6 +121,7 @@ class TodoController extends Controller
         $todo->is_completed = !$todo->is_completed;
         $todo->save();
 
-        return back();
+        // return back();
+        return redirect()->back();
     }
 }
