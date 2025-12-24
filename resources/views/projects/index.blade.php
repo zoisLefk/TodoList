@@ -6,25 +6,22 @@
     </div>
 
     <ul role="list" class="divide-y divide-white/5">
-        <li class="flex justify-between gap-x-6 py-5">
-            <p>Title</p>
-            <p>Description</p>
+        <li class="flex justify-between gap-x-6 py-5 my-5">
+            <p class="basis-1/4">Title</p>
+            <p class="basis-1/4">Description</p>
             <p></p>
             <p></p>
             <p></p>
         </li>
         @foreach ($projects as $project)
-        <li class="flex justify-between gap-x-6" style="padding: 10px;">
+        <li class="flex justify-between gap-x-6 bg-white/5 my-5 p-5 rounded-xl items-center shadow-[10px_10px_5px_rgba(0,0,0,0.25)]">
             <div class="basis-1/4">
                 <p class="text-sm/6 font-semibold text-white">{{ $project->title }}</p>
             </div>
             <div class="basis-1/4">
                 <p class="text-sm/6 font-semibold text-white">{{ $project->description }}</p>
             </div>
-            <div>
-                @include('projects.edit')
-            </div>
-            <a href="{{ route('projects.show', $project->id) }}" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1 basis-1/4">
+            <a href="{{ route('projects.show', $project->id) }}" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1 bg-white/10 p-5 rounded-2xl shadow-[0_10px_10px_rgba(0,0,0,0.25)] hover:text-white">
                 <span>View Project</span>
                 <svg
                     width="10"
@@ -41,6 +38,9 @@
                     />
                 </svg>
             </a>
+            <div>
+                @include('projects.edit')
+            </div>
             <div>
                 @include('projects.delete')
             </div>

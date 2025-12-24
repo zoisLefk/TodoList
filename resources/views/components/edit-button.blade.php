@@ -1,6 +1,6 @@
 <svg fill="#ff0000ff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 width="50px" height="50px" viewBox="0 0 494.936 494.936"
-	 xml:space="preserve">
+	 xml:space="preserve" style="fill: #cbd6e0ff;" >
 <g>
 	<g>
 		<path d="M389.844,182.85c-6.743,0-12.21,5.467-12.21,12.21v222.968c0,23.562-19.174,42.735-42.736,42.735H67.157

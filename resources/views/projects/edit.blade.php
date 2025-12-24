@@ -1,5 +1,5 @@
 <div class="container">
-    <button command="show-modal" commandfor="edit-dialog-{{ $project->id }}">
+    <button command="show-modal" commandfor="edit-dialog-{{ $project->id }}" class="shadow-inner shadow-black p-4 rounded-lg bg-white/10 hover:bg-white/5">
         @include('components.edit-button')
     </button>
     <dialog id="edit-dialog-{{ $project->id }}" aria-labelledby="dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">

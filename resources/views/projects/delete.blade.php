@@ -1,4 +1,4 @@
-<button command="show-modal" commandfor="dialog-{{ $project->id }}">@include('components.delete-button')</button>
+<button command="show-modal" commandfor="dialog-{{ $project->id }}" class="shadow-inner shadow-black p-4 rounded-lg bg-white/10 hover:bg-white/5">@include('components.delete-button')</button>
 <el-dialog>
   <dialog id="dialog-{{ $project->id }}" aria-labelledby="dialog-title" class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
     <el-dialog-backdrop class="fixed inset-0 bg-gray-900/50 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"></el-dialog-backdrop>
